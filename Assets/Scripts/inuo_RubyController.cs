@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RubyController : MonoBehaviour
+public class inuo_RubyController : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rigidbody2d;
