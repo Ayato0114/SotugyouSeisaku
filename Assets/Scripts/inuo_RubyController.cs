@@ -8,7 +8,10 @@ public class inuo_RubyController : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private float horizontal;
     private float vertical;
+    private bool isInvincible; //–³“Gó‘Ô‚©
+    private float invincibleTimer; //c‚è–³“GŠÔ
 
+    public float timeInvincible = 2.0f; //–³“GŠÔ
     public int maxHealth = 5;   //Å‘åHP
     private int currentHealth;
 
@@ -30,7 +33,15 @@ public class inuo_RubyController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         
-       
+        // –³“GŠÔXVˆ—
+        if(isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if(invincibleTimer < 0)
+            {
+                isInvincible = false;
+            }
+        }
        
 
        
@@ -45,8 +56,15 @@ public class inuo_RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
+    //Œ’Nó‘Ô‚ğ•ÏX
     public void ChangeHealth(int amount)
     {
+        if(amount < 0)
+        {
+            if (isInvincible) return;
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
