@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art/Title.meta
+guid: 9e44356fb57df144da829678b8819e85
+folderAsset: yes
+========
+guid: bb5a7e96b5a329b4ebc53940efd7cdba
+>>>>>>>> main:Assets/MainScene.unity.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
