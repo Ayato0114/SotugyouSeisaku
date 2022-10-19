@@ -18,7 +18,7 @@ public class CollectibleHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        RubyController controller = collision.GetComponent<RubyController>();
+        inuo_RubyController controller = collision.GetComponent<inuo_RubyController>();
         if(controller != null)
         {
             if(controller.health < controller.maxHealth)

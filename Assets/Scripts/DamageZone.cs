@@ -6,9 +6,9 @@ public class DamageZone : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        RubyController controller = collision.GetComponent<RubyController>();
+        inuo_RubyController controller = collision.GetComponent<inuo_RubyController>();
         if(controller != null)
         {
             controller.ChangeHealth(-1);
