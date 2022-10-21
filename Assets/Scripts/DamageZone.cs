@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    public int damageAmount = 1;    // ダメージ量 
+    public int damageAmount = 1;        // ダメージ量 
     public float timeInvincible = 2.0f; // クールタイム
-    private bool isInvincible; // クールタイムか
-    private float invincibleTimer; // 残り時間
+    private bool isInvincible;          // クールタイムか
+    private float invincibleTimer;      // 残り時間
 
     void Update()
     {
-        // 無敵時間の更新処理
+        // クールタイムの更新処理
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;

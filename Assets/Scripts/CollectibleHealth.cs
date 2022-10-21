@@ -9,7 +9,6 @@ public class CollectibleHealth : MonoBehaviour
 
     // トリガー設定の 2D コライダーに衝突した時に呼ばれる関数
     private void OnTriggerEnter2D(Collider2D collision)
-    //private void OnTriggerEnter2D(Collider2D collision)
     {       
         //Debug.Log("トリガーに侵入しているオブジェクト : " + collision);
         // 衝突した相手が Ruby か判定する
