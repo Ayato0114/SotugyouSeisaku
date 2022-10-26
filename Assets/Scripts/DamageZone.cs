@@ -25,7 +25,6 @@ public class DamageZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log("トリガーに侵入しているオブジェクト : " + collision);
         // 衝突した相手が Ruby か判定する
         RubyController controller = collision.GetComponent<RubyController>();
         if (controller != null)

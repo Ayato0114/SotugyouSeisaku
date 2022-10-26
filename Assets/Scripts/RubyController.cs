@@ -53,8 +53,8 @@ public class RubyController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        speed.x = 10.0f * horizontal * Time.deltaTime;
-        speed.y = 10.0f * vertical * Time.deltaTime;
+        speed.x = 15.0f * horizontal * Time.deltaTime;
+        speed.y = 15.0f * vertical * Time.deltaTime;
 
         // –³“GŠÔ‚ÌXVˆ—
         //if (isInvincible)
