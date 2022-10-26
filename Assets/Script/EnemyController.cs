@@ -18,11 +18,28 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rigidbody2d;
 
     private Animator animator;
+
+
+    private bool isInvincible; //–³“Gó‘Ô‚©
+    private float invincibleTimer; //c‚è–³“GŠÔ
+
+    public float timeInvincible = 2.0f; //–³“GŠÔ
+    public int maxHealth = 5;   //Å‘åHP
+    private int currentHealth;
+
+
+
+    public int health
+    {
+        get { return currentHealth; }
+    }
+
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
        
     
@@ -60,6 +77,18 @@ public class EnemyController : MonoBehaviour
         //•¨—ƒVƒXƒeƒ€‚ÉˆÊ’u‚ğ“`‚¦‚é
         rigidbody2d.MovePosition(position);
 
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible) return;
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
     }
 }
 

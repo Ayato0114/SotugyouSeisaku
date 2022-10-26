@@ -8,7 +8,7 @@ public class DamageZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        inuo_RubyController controller = collision.GetComponent<inuo_RubyController>();
+        Controller controller = collision.GetComponent<Controller>();
         if(controller != null)
         {
             controller.ChangeHealth(-1);
