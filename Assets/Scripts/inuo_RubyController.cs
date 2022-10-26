@@ -10,10 +10,13 @@ public class inuo_RubyController : MonoBehaviour
     private float vertical;
     private bool isInvincible; //–³“Gó‘Ô‚©
     private float invincibleTimer; //c‚è–³“GŠÔ
+    private int currentHealth;
+   
 
     public float timeInvincible = 2.0f; //–³“GŠÔ
     public int maxHealth = 5;   //Å‘åHP
-    private int currentHealth;
+    
+   
 
     public int health
     {
@@ -42,10 +45,10 @@ public class inuo_RubyController : MonoBehaviour
                 isInvincible = false;
             }
         }
-       
 
-       
       
+
+
     }
     private void FixedUpdate()
     {
@@ -68,4 +71,6 @@ public class inuo_RubyController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
+
+    
 }
