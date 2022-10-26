@@ -4,32 +4,24 @@ using UnityEngine;
 
 public class CollectibleHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int recoveryAmount = 1;  // 回復量
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    // トリガー設定の 2D コライダーに衝突した時に呼ばれる関数
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        inuo_RubyController controller = collision.GetComponent<inuo_RubyController>();
-        if(controller != null)
+    {       
+        //Debug.Log("トリガーに侵入しているオブジェクト : " + collision);
+        // 衝突した相手が Ruby か判定する
+        RubyController controller = collision.GetComponent<RubyController>();
+        if (controller != null)
         {
-            if(controller.health < controller.maxHealth)
-            {
-                controller.ChangeHealth(1);
+            // Ruby の HP を 1 増やす
+            controller.ChangeHealth(recoveryAmount);
 
-                Destroy(gameObject);
-
-            }
-
-          
+            // 自身を削除する
+            Destroy(gameObject);
         }
+
     }
+
 }

@@ -11,10 +11,24 @@ public class Controller : MonoBehaviour
     private Animator animator;
     private Vector2 lookDirection = new Vector2(1, 0);
 
+    private bool isInvincible; //–³“Gó‘Ô‚©
+    private float invincibleTimer; //c‚è–³“GŠÔ
+
+    public float timeInvincible = 2.0f; //–³“GŠÔ
+    public int maxHealth = 5;   //Å‘åHP
+    private int currentHealth;
+
     // Start is called before the first frame update
+
+    public int health
+    {
+        get { return currentHealth; }
+    }
+
     void Start()
     {
         rigidbody2d= GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
 
@@ -44,6 +58,16 @@ public class Controller : MonoBehaviour
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
         transform.position = position;
+
+        // –³“GŠÔXVˆ—
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -57,4 +81,30 @@ public class Controller : MonoBehaviour
 
     }
 
+
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible) return;
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
+        if (enemy_controllers != null)
+        {
+            enemy_controllers.ChangeHealth(-1);
+
+            if(enemy_controllers.health==0)
+            {
+                Destroy(enemy_controllers.gameObject);
+            }
+        }
+    }
 }

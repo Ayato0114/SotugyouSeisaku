@@ -4,24 +4,48 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int damageAmount = 1;        // ダメージ量 
+    public float timeInvincible = 2.0f; // クールタイム
+    private bool isInvincible;          // クールタイムか
+    private float invincibleTimer;      // 残り時間
+
+    void Update()
+    {
+        // クールタイムの更新処理
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+            }
+        }
+
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        inuo_RubyController controller = collision.GetComponent<inuo_RubyController>();
-        if(controller != null)
+        // 衝突した相手が Ruby か判定する
+        RubyController controller = collision.GetComponent<RubyController>();
+        if (controller != null)
         {
-            controller.ChangeHealth(-1);
+            if (isInvincible) return;
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+
+            Damage(controller);
         }
-    }
-    void Start()
-    {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damage(RubyController controller)
     {
-        
+        // Ruby の HP を 減らす
+        controller.ChangeHealth(-damageAmount);
     }
+
+
+
+    // トリガー設定の 2D コライダーに衝突した時に呼ばれる関数
+
 }
