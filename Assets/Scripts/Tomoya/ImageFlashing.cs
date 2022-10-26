@@ -26,4 +26,5 @@ public class ImageFlashing : MonoBehaviour
     {
         image.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time / duration, 1.0f));
     }
+
 }
