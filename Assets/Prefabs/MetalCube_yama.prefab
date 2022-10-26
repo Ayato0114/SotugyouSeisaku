@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1991967624443298106}
   - component: {fileID: 1991967624443298105}
   m_Layer: 0
-  m_Name: MetalCube
+  m_Name: MetalCube_yama
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
