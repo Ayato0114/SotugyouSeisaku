@@ -14,6 +14,9 @@ public class SceneSwitchClear : MonoBehaviour
             //Playerタグの付いているオブジェクトが乗ったら
             if(other.tag.Contains("Player"))
             {
+                
+
+                //何度もフラグが立たないようにする
                 exitFlag = true;
             }
         }
