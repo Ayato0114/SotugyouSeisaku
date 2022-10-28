@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageZone : MonoBehaviour
+public class YamaDamageZone : MonoBehaviour
 {
     public int damageAmount = 1;        // ダメージ量 
     public float timeInvincible = 2.0f; // クールタイム
@@ -26,7 +26,7 @@ public class DamageZone : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         // 衝突した相手が Ruby か判定する
-        RubyController controller = collision.GetComponent<RubyController>();
+        YamaRubyController controller = collision.GetComponent<YamaRubyController>();
         if (controller != null)
         {
             if (isInvincible) return;
@@ -38,7 +38,7 @@ public class DamageZone : MonoBehaviour
 
     }
 
-    public void Damage(RubyController controller)
+    public void Damage(YamaRubyController controller)
     {
         // Ruby の HP を 減らす
         controller.ChangeHealth(-damageAmount);

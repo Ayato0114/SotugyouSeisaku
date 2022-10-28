@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RubyController : MonoBehaviour
+public class YamaRubyController : MonoBehaviour
 {
     //public float timeInvincible = 2.0f; // ñ≥ìGéûä‘
     //private bool isInvincible; // ñ≥ìGèÛë‘Ç©
@@ -75,7 +75,7 @@ public class RubyController : MonoBehaviour
         Vector2 position = transform.position;
         //Vector2 position = rigidbody2d.AddForce(speed);
         rigidbody2d.AddForce(speed);
-        
+
 
         position.x = position.x + speed.x;
         position.y = position.y + speed.y;
