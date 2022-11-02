@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneSwitchClear : MonoBehaviour
+public class SceneSwitch : MonoBehaviour
 {
     //Exitに到達したかどうか
     private bool exitFlag = false;
-
 
     //Exitタイルに乗った時に呼び出される関数
     private void OnTriggerEnter2D(Collider2D collider)
