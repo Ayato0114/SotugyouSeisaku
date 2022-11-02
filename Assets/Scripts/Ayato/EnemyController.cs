@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public int maxHealth = 5;   //ç≈ëÂHP
     private int currentHealth;
 
-
+    public UnityEvent OnDestroyed = new UnityEvent();
 
     public int health
     {
@@ -90,6 +91,13 @@ public class EnemyController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destroyed");
+        OnDestroyed.Invoke();
+    }
+
 }
 
 
