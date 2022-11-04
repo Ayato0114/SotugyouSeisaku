@@ -92,6 +92,15 @@ public class EnemyController : MonoBehaviour
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Controller player = collision.gameObject.GetComponent<Controller>();
+        if (player != null)
+        {
+            player.ChangeHealth(-1);
+        }
+    }
+
     private void OnDestroy()
     {
         Debug.Log("Destroyed");
