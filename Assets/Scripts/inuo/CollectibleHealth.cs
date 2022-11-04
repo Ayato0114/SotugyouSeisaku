@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CollectibleHealth : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class CollectibleHealth : MonoBehaviour
         
     }
 
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Controller controller = collision.GetComponent<Controller>();

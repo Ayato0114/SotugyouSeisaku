@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    static ItemManager instance;
+    public static ItemManager GetInstance()
+    {
+        return instance;
+    }
     //　アイテムデータベース
     [SerializeField]
     private inuo_itemDataBase itemDataBase;
@@ -14,12 +19,13 @@ public class ItemManager : MonoBehaviour
     {
         for (int i = 0; i < itemDataBase.GetItemLists().Count; i++)
         {
+            instance = this;
             //　アイテム数を適当に設定
             numOfItem.Add(itemDataBase.GetItemLists()[i], i);
             //　確認の為データ出力
             Debug.Log(itemDataBase.GetItemLists()[i].GetItemName() + ": " + itemDataBase.GetItemLists()[i].GetInformation());
         }
-        Debug.Log(numOfItem[GetItem("薬草")]);
+        //Debug.Log(numOfItem[GetItem("薬草")]);
     }
 
     //　名前でアイテムを取得
@@ -31,5 +37,10 @@ public class ItemManager : MonoBehaviour
         void Update()
     {
         
+    }
+
+    public bool HasItem(string searchName)
+    {  
+        return itemDataBase.GetItemLists().Exists(item => item.GetItemName() == searchName);
     }
 }
