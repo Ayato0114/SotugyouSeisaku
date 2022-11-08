@@ -7,28 +7,25 @@ public class YamaAxis : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Vector3 up = new Vector3(0.0f, 0.0f, 1.0f);
+    private Vector3 up = new Vector3(0.0f, 0.0f, 1.0f);
     [SerializeField]
-    GameObject target;
-    Vector3 toDirection = new Vector3(1, 0, 0);
-    public GameObject player;
-    YamaRubyController controller;
-    //private object SampleParent;
+    public GameObject target;
+    private Vector3 toDirection = new Vector3(1, 0, 0);
+    private GameObject player;
+    private YamaRubyController controller;
 
     void Start()
     {
-        // 親のゲームオブジェクトを取得
-        player = transform.parent.gameObject;
+        // プレイヤーのゲームオブジェクトを取得
+        player = target;
         controller = player.GetComponent<YamaRubyController>();
+
+        //controller = target.GetComponent<YamaRubyController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //toDirection = target.transform.position - transform.position;
-
-        //transform.position = Ruby.transform.position;
-
         // Rubyの方向ベクトルを代入
         toDirection.x = controller.lookDirection.x;
         toDirection.y = controller.lookDirection.y;
@@ -39,6 +36,5 @@ public class YamaAxis : MonoBehaviour
     void RotateObject()
     {
         transform.rotation = Quaternion.FromToRotation(Vector3.up, toDirection);
-        //transform.Rotate(up * 0.2f);
     }
 }

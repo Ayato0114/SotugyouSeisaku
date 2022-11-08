@@ -9,6 +9,8 @@ public class YamaRubyController : MonoBehaviour
     private float vertical;
     public float speed = 3.0f;//ˆÚ“®‘¬“x
     private Animator animator;
+
+    // Axis‚Åg‚¤‚½‚ßpublic‚É•ÏX
     public Vector2 lookDirection = new Vector2(1, 0);
 
     private bool isInvincible; //–³“Gó‘Ô‚©
