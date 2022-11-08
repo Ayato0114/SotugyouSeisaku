@@ -18,8 +18,11 @@ public class Controller : MonoBehaviour
     public int maxHealth = 5;   //最大HP
     private int currentHealth;
 
+    public GameObject projectilePrefab;
     // Start is called before the first frame update
 
+
+    
     public int health
     {
         get { return currentHealth; }
@@ -27,7 +30,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        rigidbody2d= GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
@@ -37,13 +40,13 @@ public class Controller : MonoBehaviour
     {
         //FixedUpdate()ではinput関連の入力を読み取るのは
         //禁止のため、update()で入力値を保存しておく
-         horizontal = Input.GetAxis("Horizontal");
+        horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         //入力値を代入
         Vector2 move = new Vector2(horizontal, vertical);
         //move.x、move.yの値が0.0fでない時は移動方向を設定する
         //※入力値がない場合でも今向いてる方向を保持しておきたいため
-        if(!Mathf.Approximately(move.x,0.0f)||!Mathf.Approximately(move.y,0.0f))
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection = move;
             lookDirection.Normalize();
@@ -68,6 +71,12 @@ public class Controller : MonoBehaviour
                 isInvincible = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Launch();
+        }
+
     }
     void FixedUpdate()
     {
@@ -96,15 +105,32 @@ public class Controller : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
-        if (enemy_controllers != null)
-        {
-            enemy_controllers.ChangeHealth(-1);
+        //EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
+        //if (enemy_controllers != null)
+        //{
+        //    enemy_controllers.ChangeHealth(-1);
 
-            if(enemy_controllers.health==0)
-            {
-                Destroy(enemy_controllers.gameObject);
-            }
-        }
+        //    if (enemy_controllers.health == 0)
+        //    {
+        //        Destroy(enemy_controllers.gameObject);
+        //    }
+        //}
     }
+
+    void Launch()
+    {
+
+        //プレハブからオブジェクトを生成
+        GameObject projectileObject = Instantiate
+            (projectilePrefab,
+            rigidbody2d.position + Vector2.up * 0.5f,
+            Quaternion.identity);
+        //Projectileコンポーネントに発射命令
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 300);
+        //Animatorへパラメータ値を送信
+        animator.SetTrigger("Launch");
+    }
+
+
 }

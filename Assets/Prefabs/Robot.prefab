@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7539402629456400498}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   vertical: 1
   speed: 3
   changeTime: 3
+  timeInvincible: 2
+  maxHealth: 5
 --- !u!95 &-7539402629456400498
 Animator:
   serializedVersion: 4
