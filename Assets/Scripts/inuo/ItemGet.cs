@@ -33,14 +33,7 @@ public class ItemGet : MonoBehaviour
         transform.position = ItemInventory.instance.ItemSlot[i].transform.position;
         gameObject.GetComponent<Button>().enabled = true;
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.CompareTag("Player"))
-    //    {
-    //        transform.position = ItemInventory.instance.ItemSlot.transform.position;
-    //    }
-    //}
-    // Start is called before the first frame update
+   
     void Start()
     {
         

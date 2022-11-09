@@ -20,6 +20,14 @@ public class HealItem : MonoBehaviour
         Player.color = Color.red;
         Destroy(gameObject);
     }
+
+    public void Use2()
+    {
+        int i = gameObject.GetComponent<ItemGet>().ArrayNo;
+        ItemInventory.instance.isItem[i] = false;
+        Player.color = Color.green;
+        Destroy(gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
