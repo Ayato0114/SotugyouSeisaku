@@ -59,37 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3875561f772f3854bb92077fbf324c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colum: 8
-  rows: 8
-  floorTiles:
-  - {fileID: 2027743308946804701, guid: b9bbd22a59d0d6841a711ce8184a1d96, type: 3}
-  - {fileID: 4163290021285667808, guid: f2eb15d246a0b6f44bd6da8102da18cb, type: 3}
-  - {fileID: 3039557212250121293, guid: 17109cf91a914cc4fbeef20fb6ae0480, type: 3}
-  - {fileID: 3696620965831630080, guid: ebb210e98034f4d4492ef2636414acc1, type: 3}
-  - {fileID: 321408465607938730, guid: 2af0ae56fa43e3141a4a64869612bc00, type: 3}
-  - {fileID: 7573427278106919739, guid: e129ac216b4b1074f90c1f9f1f50ceed, type: 3}
-  - {fileID: 6841031011417454893, guid: 530bbe54f3c995c4c8fef0a1aa078a52, type: 3}
-  - {fileID: 494559297503886044, guid: 139dbc728b736304aad44ca01da4a774, type: 3}
-  wallTiles:
-  - {fileID: 3596449892497808384, guid: ef6a3de9df04c2c499fb4092d73ecfa3, type: 3}
-  - {fileID: 2267068583950746714, guid: 300ac733864244549a24d238743493b5, type: 3}
-  - {fileID: 4099198276409939024, guid: b744738c9190c1a4785aad5d3dfda873, type: 3}
-  - {fileID: 5578818937087861596, guid: 36bd14e19978f274ea9ad38b5ee1fdc9, type: 3}
-  - {fileID: 1022216594884024310, guid: 4628dbf393070474da052ba0defe6bb4, type: 3}
-  - {fileID: 3632257598663016705, guid: ecb116b3d8d2feb4b8b8be38f30dfdc9, type: 3}
-  - {fileID: 1954330597502119775, guid: 73f38e44e7b2da345b87c5e7ab0bb200, type: 3}
-  - {fileID: 1683227979798807420, guid: 096d78315eef568478b7882a7c4c09fc, type: 3}
-  foodTiles:
-  - {fileID: 5517337057609825315, guid: 0189bbecba5a4c84c838b2017b6c23df, type: 3}
-  - {fileID: 3456646215433755529, guid: a8c2f95f7a1c2a048b32c0112631dd4f, type: 3}
-  outWallTiles:
-  - {fileID: 1789845982925798082, guid: bf1e975c178cb0b4cadc14ca4f85a99e, type: 3}
-  - {fileID: 7663534128547005494, guid: 8a34d4ce4241cc449a723ead10398f69, type: 3}
+  WallObject: {fileID: 1789845982925798082, guid: bf1e975c178cb0b4cadc14ca4f85a99e,
+    type: 3}
+  RoadObject: {fileID: 2027743308946804701, guid: b9bbd22a59d0d6841a711ce8184a1d96,
+    type: 3}
   exit: {fileID: 8139945020506750667, guid: cf615842bd3606c4b814e6cf0780ba0c, type: 3}
-  wallMin: 5
-  wallMax: 9
-  foodMin: 1
-  foodMax: 5
+  isHome: 1
 --- !u!1001 &291925919392706225
 PrefabInstance:
   m_ObjectHideFlags: 0
