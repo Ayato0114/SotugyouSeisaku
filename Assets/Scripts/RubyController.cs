@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class RubyController : MonoBehaviour
 {
     //public float timeInvincible = 2.0f; // –³“GŠÔ
@@ -89,4 +89,27 @@ public class RubyController : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Player‚ªExit‚Éæ‚Á‚½‚ç
+        if (collision.tag == "Exit")
+        {
+            //BoarManager boarManager = new BoarManager();
+            //if (boarManager.GetSetProperty == true)
+            //{
+            //    boarManager.GetSetProperty = false;
+            //}
+            Invoke("Restart", 0.5f);
+        }
+
+
+    }
+
+    public void Restart()
+    {
+       
+        SceneManager.LoadScene(3);
+    }
+
 }

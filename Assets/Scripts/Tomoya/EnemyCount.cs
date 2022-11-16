@@ -24,7 +24,8 @@ public class EnemyCount : MonoBehaviour
     private GameObject[] enemyBox;
 
     //“G‚ª‘S–Å‚µ‚½‚Æ‚«‚É—§‚Âƒtƒ‰ƒO
-    private bool annihilatedEnemy = false;
+    public static bool annihilatedEnemy = false;
+   
 
     void Update()
     {
