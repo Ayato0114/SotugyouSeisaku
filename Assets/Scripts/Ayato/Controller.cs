@@ -31,7 +31,10 @@ public class Controller : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+
+        //ÉQÅ[ÉÄäJénéûÇ…HPÇèâä˙âªÇ∑ÇÈ
         currentHealth = maxHealth;
+
         animator = GetComponent<Animator>();
     }
 
@@ -95,6 +98,8 @@ public class Controller : MonoBehaviour
     {
         if (amount < 0)
         {
+            animator.SetTrigger("Hit");
+
             if (isInvincible) return;
             isInvincible = true;
             invincibleTimer = timeInvincible;
@@ -103,19 +108,19 @@ public class Controller : MonoBehaviour
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        //EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
-        //if (enemy_controllers != null)
-        //{
-        //    enemy_controllers.ChangeHealth(-1);
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    //EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
+    //    //if (enemy_controllers != null)
+    //    //{
+    //    //    enemy_controllers.ChangeHealth(-1);
 
-        //    if (enemy_controllers.health == 0)
-        //    {
-        //        Destroy(enemy_controllers.gameObject);
-        //    }
-        //}
-    }
+    //    //    if (enemy_controllers.health == 0)
+    //    //    {
+    //    //        Destroy(enemy_controllers.gameObject);
+    //    //    }
+    //    //}
+    //}
 
     void Launch()
     {

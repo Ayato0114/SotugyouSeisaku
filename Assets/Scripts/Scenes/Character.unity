@@ -567,7 +567,7 @@ PrefabInstance:
     - target: {fileID: 5083426799266621103, guid: 45f140d50383e474e9289f142e293668,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0745
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5083426799266621103, guid: 45f140d50383e474e9289f142e293668,
         type: 3}
@@ -621,9 +621,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5083426799266621776, guid: 45f140d50383e474e9289f142e293668,
         type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083426799266621776, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
       propertyPath: m_SpriteSortPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5083426799266621776, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 5083426799266621777, guid: 45f140d50383e474e9289f142e293668,
         type: 3}
       propertyPath: m_Name
@@ -638,6 +648,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603370357675489741, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603370357675489741, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b77822e0485373d40b5beb92e9a5e728, type: 2}
+    - target: {fileID: 5603370357675489741, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603370357675489741, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603370357675489741, guid: 45f140d50383e474e9289f142e293668,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f140d50383e474e9289f142e293668, type: 3}
@@ -671,12 +706,12 @@ PrefabInstance:
     - target: {fileID: 8082561244250708322, guid: de43c738c71a57442961fc4e376c0c03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 8082561244250708322, guid: de43c738c71a57442961fc4e376c0c03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -4.15
       objectReference: {fileID: 0}
     - target: {fileID: 8082561244250708322, guid: de43c738c71a57442961fc4e376c0c03,
         type: 3}
