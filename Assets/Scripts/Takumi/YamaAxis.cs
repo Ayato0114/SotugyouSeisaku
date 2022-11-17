@@ -6,7 +6,6 @@ using UnityEngine;
 public class YamaAxis : MonoBehaviour
 {
     // Start is called before the first frame update
-
     private Vector3 up = new Vector3(0.0f, 0.0f, 1.0f);
     [SerializeField]
     public GameObject target;
@@ -19,8 +18,6 @@ public class YamaAxis : MonoBehaviour
         // プレイヤーのゲームオブジェクトを取得
         player = target;
         controller = player.GetComponent<YamaRubyController>();
-
-        //controller = target.GetComponent<YamaRubyController>();
     }
 
     // Update is called once per frame

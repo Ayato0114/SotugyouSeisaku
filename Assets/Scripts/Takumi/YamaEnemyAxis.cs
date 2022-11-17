@@ -11,19 +11,22 @@ public class YamaEnemyAxis : MonoBehaviour
     [SerializeField]
     public GameObject target;
     public GameObject me;
+    private GameObject child;
     private Vector3 toDirection = new Vector3(1, 0, 0);
     private Vector3 TargetPosition;
     private Vector3 MePosition;
     private float length;
+    
 
     void Start()
     {
-
+        child = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         // ターゲットのゲームオブジェクトから位置取得
         TargetPosition = target.transform.position;
 
@@ -35,15 +38,23 @@ public class YamaEnemyAxis : MonoBehaviour
         toDirection = MePosition - TargetPosition;
 
         length = toDirection.magnitude;
-        Debug.Log(toDirection.magnitude);
+        Debug.Log(length);
 
         if (length < 14.0f)
         {
-            gameObject.SetActive(true);
+            if(child.GetComponent<SpriteRenderer>().material.color.a <= 0)
+            {
+                child.GetComponent<SpriteRenderer>().material.color = 
+                    child.GetComponent<SpriteRenderer>().material.color + new Color32(0, 0, 0, 255);
+            }
         }
         else
         {
-            //gameObject.SetActive(false);
+            if(child.GetComponent<SpriteRenderer>().material.color.a > 0)
+            {
+                child.GetComponent<SpriteRenderer>().material.color = 
+                    child.GetComponent<SpriteRenderer>().material.color - new Color32(0, 0, 0, 255);
+            }
         }
 
         toDirection.Normalize();
