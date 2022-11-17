@@ -231,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1263340870394802089, guid: de43c738c71a57442961fc4e376c0c03,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1394504664164024059, guid: de43c738c71a57442961fc4e376c0c03,
         type: 3}
       propertyPath: vertical
