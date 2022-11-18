@@ -20,6 +20,17 @@ public class Projectile : MonoBehaviour
 
     void Awake()
     {
+       
+       
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        bulletTrans = GetComponent<Transform>();
+        time = 0;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
         playerObject = GameObject.FindWithTag("Enemy");
         if (playerObject == null)
         {
@@ -31,15 +42,7 @@ public class Projectile : MonoBehaviour
         {
             playerTrans = playerObject.transform.position;
         }
-       
-        rigidbody2d = GetComponent<Rigidbody2D>();
-        bulletTrans = GetComponent<Transform>();
-        time = 0;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         time += Time.deltaTime;
         print(time);
         if (time > deleteTime)
