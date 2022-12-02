@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     private float invincibleTimer; //c‚è–³“GŠÔ
 
     public float timeInvincible = 2.0f; //–³“GŠÔ
-    public int maxHealth = 5;   //Å‘åHP
+    [SerializeField]  public int maxHealth ;   //Å‘åHP
     private int currentHealth;
 
     public UnityEvent OnDestroyed = new UnityEvent();

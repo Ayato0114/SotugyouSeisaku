@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &5083426799266621102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 3
   timeInvincible: 2
   maxHealth: 5
+  projectilePrefab: {fileID: 0}
 --- !u!95 &5603370357675489741
 Animator:
   serializedVersion: 4
