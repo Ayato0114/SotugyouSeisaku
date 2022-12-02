@@ -7,6 +7,10 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     string SceneName;
 
+    [Header("”jŠü‘ÎÛ")]
+    [SerializeField]
+    GameObject[] deleteObj;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
