@@ -8,8 +8,8 @@ public class Projectile : MonoBehaviour
     
     private Rigidbody2D rigidbody2d;
 
-    private GameObject playerObject;
-    private Vector3 playerTrans ; //追いかける対象のTransform
+    private GameObject enemyObject;
+    private Vector3 enemyTrans ; //追いかける対象のTransform
     [SerializeField] private float bulletSpeed;  　 //弾の速度
     [SerializeField] private float limitSpeed;      //弾の制限速度
     private Transform bulletTrans;                  //弾のTransform
@@ -31,16 +31,16 @@ public class Projectile : MonoBehaviour
     void Update()
     {
 
-        playerObject = GameObject.FindWithTag("Enemy");
-        if (playerObject == null)
+        enemyObject = GameObject.FindWithTag("Enemy");
+        if (enemyObject == null)
         {
-            playerTrans.x = 1;
-            playerTrans.y = 1;
-            playerTrans.z = 1;
+            enemyTrans.x = 0;
+            enemyTrans.y = 0;
+            enemyTrans.z = 0;
         }
         else
         {
-            playerTrans = playerObject.transform.position;
+            enemyTrans = enemyObject.transform.position;
         }
 
         time += Time.deltaTime;
@@ -55,7 +55,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (playerObject == null)
+        if (enemyObject == null)
         {
             Destroy(gameObject);
         }
@@ -64,18 +64,18 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (playerObject == null)
+        if (enemyObject == null)
         {
             Destroy(gameObject);
         }
 
 
-        if (playerObject != null)
+        if (enemyObject != null)
         {
 
-            Vector3 vector3 = playerTrans - bulletTrans.position;         //弾から追いかける対象への方向を計算
-            rigidbody2d.AddForce(vector3.normalized * bulletSpeed);                 //方向の長さを1に正規化、任意の力をAddForceで加える
-
+            Vector3 vector3 = enemyTrans - bulletTrans.position;         //弾から追いかける対象への方向を計算
+            //いらないかもしれない（ベクトル方向にずっと進ませて、ベクトルの向きを回転、更新したほうがいいかも）
+            rigidbody2d.AddForce(vector3.normalized * bulletSpeed);     //方向の長さを1に正規化、任意の力をAddForceで加える
             float speedXTemp = Mathf.Clamp(rigidbody2d.velocity.x, -limitSpeed, limitSpeed); //X方向の速度を制限
             float speedYTemp = Mathf.Clamp(rigidbody2d.velocity.y, -limitSpeed, limitSpeed);  //Y方向の速度を制限
             rigidbody2d.velocity = new Vector3(speedXTemp, speedYTemp);           //実際に制限した値を代入

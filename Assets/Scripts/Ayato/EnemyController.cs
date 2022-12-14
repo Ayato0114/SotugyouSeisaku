@@ -30,6 +30,14 @@ public class EnemyController : MonoBehaviour
 
     public UnityEvent OnDestroyed = new UnityEvent();
 
+    private GameObject enemy;
+
+    private GameObject target;
+
+
+   
+
+
     public int health
     {
         get { return currentHealth; }
@@ -37,29 +45,53 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+      
+
+
+        target = GameObject.Find("Player");
+        enemy = GameObject.Find("Enemy");
         rigidbody2d = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
-       
-    
+
+
     // Update is called once per frame
-     void Update()
+    void Update()
     {
+
         //一定間隔で移動方向を逆方向にする
         timer -= Time.deltaTime;
-        if(timer<0)
-        {
-            direction = -direction;
-            timer = changeTime;
-        }
+        if (timer < 0)
+            if (timer < 0)
+            {
+                direction = -direction;
+                timer = changeTime;
+            }
+
     }
+
     void FixedUpdate()
     {
         Vector2 position = transform.position;
 
-        if(vertical)
+       
+
+        ////プレイヤー-敵キャラの位置関係から方向を取得し、速度を一定化
+        //Vector2 targeting = (target.transform.position - transform.position).normalized;
+        //if (targeting.x > 0)
+        //{
+        //    this.GetComponent<SpriteRenderer>().flipX = true;
+        //}
+        //else
+        //{
+        //    this.GetComponent<SpriteRenderer>().flipX = false;
+        //}
+        ////x方向にのみプレイヤーを追う
+        //this.GetComponent<Rigidbody2D>().velocity = new Vector2((targeting.x * 5), 0);
+
+        if (vertical)
         {
             //縦方向の移動処理
             position.y = position.y + speed * Time.deltaTime * direction;
@@ -75,6 +107,7 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("MoveX", direction);
             animator.SetFloat("MoveY", 0);
         }
+
         //物理システムに位置を伝える
         rigidbody2d.MovePosition(position);
 
