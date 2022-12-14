@@ -22,7 +22,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
 
 
-    
+    public bool isArea;
     public int health
     {
         get { return currentHealth; }
@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         //ゲーム開始時にHPを初期化する
@@ -80,6 +81,11 @@ public class Controller : MonoBehaviour
             Launch();
         }
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Launch();
+        }
+
     }
     void FixedUpdate()
     {
@@ -108,8 +114,9 @@ public class Controller : MonoBehaviour
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
     //    //EnemyController enemy_controllers = collision.GetComponent<EnemyController>();
     //    //if (enemy_controllers != null)
     //    //{
@@ -120,8 +127,10 @@ public class Controller : MonoBehaviour
     //    //        Destroy(enemy_controllers.gameObject);
     //    //    }
     //    //}
-    //}
+    }
+  
 
+    
     void Launch()
     {
 
@@ -133,9 +142,24 @@ public class Controller : MonoBehaviour
         //Projectileコンポーネントに発射命令
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
+       
         //Animatorへパラメータ値を送信
         animator.SetTrigger("Launch");
     }
 
+    //void Attack()
+    //{
+
+    //    //プレハブからオブジェクトを生成
+    //    GameObject projectileObject = Instantiate
+    //        (projectilePrefab,
+    //        rigidbody2d.position + Vector2.up * 0.5f,
+    //        Quaternion.identity);
+    //    //Projectileコンポーネントに発射命令
+    //    Projectile projectile = projectileObject.GetComponent<Projectile>();
+    //    projectile.Attack(lookDirection, 300);
+    //    //Animatorへパラメータ値を送信
+    //    animator.SetTrigger("Launch");
+    //}
 
 }

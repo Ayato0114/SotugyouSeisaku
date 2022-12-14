@@ -34,6 +34,9 @@ public class BoarManager : MonoBehaviour
 
     private int exitPosX = 0;
     private int exitPosY = 0;
+
+    private int posx;
+    private int posy;
     // ìπÇÃèWçáì_
     const int meetPointCount = 1;
 
@@ -117,6 +120,8 @@ public class BoarManager : MonoBehaviour
                 exitPosX = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
                 exitPosY = Random.Range(roomPointY - MapHeight / 2, (roomPointY + i) - MapHeight / 2);
 
+                posx = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
+                posy = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
             }
         }
         return isRoad;
@@ -232,12 +237,16 @@ public class BoarManager : MonoBehaviour
 
         CreateDangeon();
 
+        transform.position = new Vector3(posx, posy, 0);
+
         bool isEnemy = EnemyCount.annihilatedEnemy;
         if (isEnemy == false)
         {
             Instantiate(exit, new Vector3(exitPosX, exitPosY, 0), Quaternion.identity);
         }
 
-
+       
     }
+
+
 }
