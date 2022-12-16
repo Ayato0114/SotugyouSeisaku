@@ -20,6 +20,9 @@ public class YamaRubyController : MonoBehaviour
     public int maxHealth = 5;   //最大HP
     private int currentHealth;
 
+    // ターン制テスト用
+    public bool frg = false;
+
     // Start is called before the first frame update
 
     public int health
@@ -56,10 +59,12 @@ public class YamaRubyController : MonoBehaviour
         animator.SetFloat("Speed", move.magnitude);
 
         //Debug.Log(horizontal);//水平入力値をコンソールウィンドウへ出力
-        Vector2 position = transform.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
-        transform.position = position;
+        //Vector2 position = transform.position;
+        //position.x = position.x + speed * horizontal * Time.deltaTime;
+        //position.y = position.y + speed * vertical * Time.deltaTime;
+        //transform.position = position;
+
+        FixedUpdate();
 
         // 無敵時間更新処理
         if (isInvincible)
@@ -71,8 +76,19 @@ public class YamaRubyController : MonoBehaviour
             }
         }
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
+        // ターン制テスト用
+        if(horizontal != 0.0f || vertical != 0.0f)
+        {
+            frg = true;
+        }
+        else
+        {
+            frg = false;
+        }
+
         Vector2 position = transform.position;
 
         position.x = position.x + speed * horizontal * Time.deltaTime;

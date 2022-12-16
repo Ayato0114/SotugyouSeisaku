@@ -15,12 +15,13 @@ public class YamaEnemyAxis : MonoBehaviour
     private Vector3 toDirection = new Vector3(1, 0, 0);
     private Vector3 TargetPosition;
     private Vector3 MePosition;
-    private float length;
-    
+    private float length;   // 自分とターゲットまでの距離
+    private float range;    // 方向を表示する距離
 
     void Start()
     {
         child = transform.GetChild(0).gameObject;
+        range = 14.0f;
     }
 
     // Update is called once per frame
@@ -34,17 +35,16 @@ public class YamaEnemyAxis : MonoBehaviour
         MePosition = me.transform.position;
         MePosition.y += 1.0f;
 
-
         toDirection = MePosition - TargetPosition;
 
         length = toDirection.magnitude;
         Debug.Log(length);
 
-        if (length < 14.0f)
+        if (length < range)
         {
             if(child.GetComponent<SpriteRenderer>().material.color.a <= 0)
             {
-                child.GetComponent<SpriteRenderer>().material.color = 
+                child.GetComponent<SpriteRenderer>().material.color =
                     child.GetComponent<SpriteRenderer>().material.color + new Color32(0, 0, 0, 255);
             }
         }
@@ -52,13 +52,12 @@ public class YamaEnemyAxis : MonoBehaviour
         {
             if(child.GetComponent<SpriteRenderer>().material.color.a > 0)
             {
-                child.GetComponent<SpriteRenderer>().material.color = 
+                child.GetComponent<SpriteRenderer>().material.color =
                     child.GetComponent<SpriteRenderer>().material.color - new Color32(0, 0, 0, 255);
             }
         }
 
         toDirection.Normalize();
-
 
         RotateObject();
         transform.position = TargetPosition;

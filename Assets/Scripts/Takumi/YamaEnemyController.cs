@@ -19,6 +19,9 @@ public class YamaEnemyController : MonoBehaviour
 
     private Animator animator;
 
+    // ターン制テスト用
+    public GameObject target;
+
 
     private bool isInvincible; //無敵状態か
     private float invincibleTimer; //残り無敵時間
@@ -27,7 +30,7 @@ public class YamaEnemyController : MonoBehaviour
     public int maxHealth = 5;   //最大HP
     private int currentHealth;
 
-
+    private bool frg = false;
 
     public int health
     {
@@ -53,30 +56,41 @@ public class YamaEnemyController : MonoBehaviour
             direction = -direction;
             timer = changeTime;
         }
+
+        // ターン制テスト用
+        frg = target.GetComponent<YamaRubyController>().frg;
     }
     void FixedUpdate()
     {
-        Vector2 position = transform.position;
-
-        if (vertical)
+        // ターン制テスト用
+        if (frg)
         {
-            //縦方向の移動処理
-            position.y = position.y + speed * Time.deltaTime * direction;
-            //アニメーターにパラメータを送信
-            animator.SetFloat("MoveX", 0);
-            animator.SetFloat("MoveY", direction);
+            Vector2 position = transform.position;
+
+            if (vertical)
+            {
+                //縦方向の移動処理
+                position.y = position.y + speed * Time.deltaTime * direction;
+                //アニメーターにパラメータを送信
+                animator.SetFloat("MoveX", 0);
+                animator.SetFloat("MoveY", direction);
+            }
+            else
+            {
+                //横方向の移動処理
+                position.x = position.x + speed * Time.deltaTime * direction;
+                //アニメーターにパラメータを送信
+                animator.SetFloat("MoveX", direction);
+                animator.SetFloat("MoveY", 0);
+            }
+            //物理システムに位置を伝える
+            rigidbody2d.MovePosition(position);
         }
         else
         {
-            //横方向の移動処理
-            position.x = position.x + speed * Time.deltaTime * direction;
-            //アニメーターにパラメータを送信
-            animator.SetFloat("MoveX", direction);
-            animator.SetFloat("MoveY", 0);
+            animator.SetFloat(0, 0);
+            animator.SetFloat(0, 0);
         }
-        //物理システムに位置を伝える
-        rigidbody2d.MovePosition(position);
-
     }
 
     public void ChangeHealth(int amount)
