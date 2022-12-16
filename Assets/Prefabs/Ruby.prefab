@@ -105,6 +105,9 @@ MonoBehaviour:
   maxHealth: 5
   projectilePrefab: {fileID: 4322326475261526419, guid: 992f020e75e53334b90bce84024270d1,
     type: 3}
+  CollectibleAmmoPrefab: {fileID: 8794193791544742472, guid: 2efc1aa1bd011ae4289de62859891460,
+    type: 3}
+  Force: 500
   isArea: 0
 --- !u!95 &7010851705493508125
 Animator:

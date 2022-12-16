@@ -19,7 +19,10 @@ public class Controller : MonoBehaviour
     private int currentHealth;
 
     public GameObject projectilePrefab;
+    public GameObject CollectibleAmmoPrefab;
     // Start is called before the first frame update
+
+    [SerializeField] float Force = 5;                 // 生成位置
 
 
     public bool isArea;
@@ -83,7 +86,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Launch();
+            Attack();
         }
 
     }
@@ -147,19 +150,19 @@ public class Controller : MonoBehaviour
         animator.SetTrigger("Launch");
     }
 
-    //void Attack()
-    //{
+    void Attack()
+    {
 
-    //    //プレハブからオブジェクトを生成
-    //    GameObject projectileObject = Instantiate
-    //        (projectilePrefab,
-    //        rigidbody2d.position + Vector2.up * 0.5f,
-    //        Quaternion.identity);
-    //    //Projectileコンポーネントに発射命令
-    //    Projectile projectile = projectileObject.GetComponent<Projectile>();
-    //    projectile.Attack(lookDirection, 300);
-    //    //Animatorへパラメータ値を送信
-    //    animator.SetTrigger("Launch");
-    //}
+        //プレハブからオブジェクトを生成
+        GameObject projectileObject = Instantiate
+            (CollectibleAmmoPrefab,
+            rigidbody2d.position + Vector2.up * 0.5f,
+            Quaternion.identity);
+        //Projectileコンポーネントに発射命令
+        Attack attack = projectileObject.GetComponent<Attack>();
+        attack.Attacks(lookDirection, Force);
+        //Animatorへパラメータ値を送信
+        animator.SetTrigger("Attack");
+    }
 
 }
