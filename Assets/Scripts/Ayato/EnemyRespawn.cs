@@ -5,8 +5,11 @@ using UnityEngine;
 public class EnemyRespawn : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemyList;    // 生成オブジェクト
-    Transform pos;                 // 生成位置
-     Transform pos2;                // 生成位置
+    [SerializeField] float MinPosX = -10;                 // 生成位置
+    [SerializeField] float MinPosY = -10;                 // 生成位置
+    [SerializeField] float MaxPosX = 10;                 // 生成位置
+    [SerializeField] float MaxPosY = 10;                 // 生成位置
+
     float minX, maxX, minY, maxY;                   // 生成範囲
 
 
@@ -15,10 +18,10 @@ public class EnemyRespawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minX = Mathf.Min(-10, -10);
-        maxX = Mathf.Max(10, 10);
-        minY = Mathf.Min(-10, -10);
-        maxY = Mathf.Max(10, 10);
+        minX = Mathf.Min(MaxPosX, MinPosX);
+        maxX = Mathf.Max(MaxPosX, MinPosX);
+        minY = Mathf.Min(MaxPosY, MinPosY);
+        maxY = Mathf.Max(MaxPosY, MinPosY);
     }
 
     // Update is called once per frame

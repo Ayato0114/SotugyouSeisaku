@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] public float deleteTime;//’e‚ÌŽžŠÔ
     float time = 0f;
 
-    void Awake()
+    void Awake() 
     {
        
        
