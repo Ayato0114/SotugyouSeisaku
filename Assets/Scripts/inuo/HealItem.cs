@@ -34,11 +34,5 @@ public class HealItem : MonoBehaviour
          
     }
 
-    public void Use3()
-    {
-        int i = gameObject.GetComponent<ItemGet>().ArrayNo;
-        ItemInventory.instance.isItem[i] = false;
-        
-        Destroy(gameObject);
-    }
+    
 }
