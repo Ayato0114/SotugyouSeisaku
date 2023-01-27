@@ -89,6 +89,7 @@ public class Projectile : MonoBehaviour
     {
         rigidbody2d.AddForce(direction * force);
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         //EnemyController enemy = collision.collider.GetComponent<EnemyController>();

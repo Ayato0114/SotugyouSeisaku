@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1394504664164024059}
   - component: {fileID: -7539402629456400498}
   - component: {fileID: 4570364169956376453}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Robot(Vertical )
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,11 +124,16 @@ MonoBehaviour:
   vertical: 1
   speed: 3
   changeTime: 3
+  span: 2
   timeInvincible: 0
   maxHealth: 1
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  enemyProjectilePrefab: {fileID: 6889996463793143162, guid: 9c271ae7fa30d3d4aae674e60eccd84d,
+    type: 3}
+  enemyProjectilePrefab_kinsetu: {fileID: 1709487931669692630, guid: 8cdb425dc6293aa439c54c8f73805756,
+    type: 3}
 --- !u!95 &-7539402629456400498
 Animator:
   serializedVersion: 4
