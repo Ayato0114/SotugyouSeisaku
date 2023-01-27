@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class RubyController : MonoBehaviour
 {
     // Update()‚ªŒÄ‚Î‚ê‚é‘O‚Éˆê“x‚¾‚¯ŒÄ‚Î‚ê‚éŠÖ”
@@ -22,4 +22,27 @@ public class RubyController : MonoBehaviour
         position.y = position.y + 0.6f * vertical * Time.deltaTime;
         transform.position = position;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Player‚ªExit‚Éæ‚Á‚½‚ç
+        if (collision.tag == "Exit")
+        {
+            //BoarManager boarManager = new BoarManager();
+            //if (boarManager.GetSetProperty == true)
+            //{
+            //    boarManager.GetSetProperty = false;
+            //}
+            Invoke("Restart", 0.5f);
+        }
+
+
+    }
+
+    public void Restart()
+    {
+       
+        SceneManager.LoadScene(3);
+    }
+
 }
