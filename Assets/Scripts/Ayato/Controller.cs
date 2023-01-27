@@ -160,7 +160,7 @@ public class Controller : MonoBehaviour
             Quaternion.identity);
         //Projectileコンポーネントに発射命令
         Attack attack = projectileObject.GetComponent<Attack>();
-        attack.Attacks(lookDirection, Force);
+        attack.Attacks(lookDirection, 1000);
         //Animatorへパラメータ値を送信
         animator.SetTrigger("Attack");
     }

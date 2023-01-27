@@ -7,6 +7,9 @@ public class Attack : MonoBehaviour
     private GameObject playerObject;
     private Rigidbody2D rigidbody2d;
 
+    private float titen_x;
+    private float titen_y;
+    private float titen_z;
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -15,11 +18,35 @@ public class Attack : MonoBehaviour
     void Update()
     {
         playerObject = GameObject.FindWithTag("Player");
-        
-        if (playerObject.transform.position.magnitude>10.0f)
+
+        if (gameObject == true)
         {
-            Destroy(gameObject);
+
+            titen_x = playerObject.transform.position.x;
+            titen_y = playerObject.transform.position.y;
+            titen_z = playerObject.transform.position.z;
+
+            if (transform.position.x-titen_x > 1.0f)
+            {
+                Destroy(gameObject);
+                
+            }
+            if (transform.position.y -titen_y > 1.0f)
+            {
+                Destroy(gameObject);
+            }
+
+            if (transform.position.x - titen_x < -1.0f)
+            {
+                Destroy(gameObject);
+
+            }
+            if (transform.position.y - titen_y < -1.0f)
+            {
+                Destroy(gameObject);
+            }
         }
+        
     }
 
     public void Attacks(Vector2 direction, float force)
@@ -39,6 +66,7 @@ public class Attack : MonoBehaviour
                 Destroy(enemies.gameObject);
             }
         }
+        
 
         Destroy(gameObject);
     }
