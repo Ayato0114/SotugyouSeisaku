@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("target‚ªDestroy‚³‚ê‚Ü‚µ‚½");
             //‚±‚±‚Éˆ—‚ğ’Ç‰Á
+
         });
     }
 }

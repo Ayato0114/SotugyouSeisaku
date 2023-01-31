@@ -54,7 +54,7 @@ public class EnemyCount : MonoBehaviour
         enemyCount = enemyBox.Length;
     }
 
-    bool GetAnnihilatedEnemy()
+    public static bool GetAnnihilatedEnemy()
     {
         return annihilatedEnemy;
     }

@@ -40,6 +40,8 @@ public class Controller : MonoBehaviour
         currentHealth = maxHealth;
 
         animator = GetComponent<Animator>();
+
+
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(SceneName , LoadSceneMode.Single);
+            SceneManager.LoadScene("Map", LoadSceneMode.Single);
         }
     }
 }

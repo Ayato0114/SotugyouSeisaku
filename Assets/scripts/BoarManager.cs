@@ -35,10 +35,22 @@ public class BoarManager : MonoBehaviour
     private int exitPosX = 0;
     private int exitPosY = 0;
 
-    private int posx;
-    private int posy;
+    private int PosX;
+    private int PosY;
+
+    //bool isExit = false;
+    
     // 道の集合点
     const int meetPointCount = 1;
+
+
+    void Update()
+    {
+        //if (EnemyCount.GetAnnihilatedEnemy() == true)
+        //{
+        //    Instantiate(exit, new Vector3(exitPosX, exitPosY, 0), Quaternion.identity);
+        //}
+    }
 
 
     // Mapの二次元配列の初期化
@@ -79,9 +91,12 @@ public class BoarManager : MonoBehaviour
             int roadStartPointY = Random.Range(roomPointY, roomPointY + roomHeight);
 
             bool isRoad = false;
+
+
             if (isHome == false)
             {
                 isRoad = CreateRoomData(roomHeight, roomWidth, roomPointX, roomPointY);
+
                 if (isRoad == false)
                 {
                     CreateRoadData(roadStartPointX, roadStartPointY, meetPointX[Random.Range(0, 0)], meetPointY[Random.Range(0, 0)]);
@@ -116,14 +131,20 @@ public class BoarManager : MonoBehaviour
                 {
                     Map[roomPointY + i, roomPointX + j] = road;
                 }
-                Instantiate(RoadObject, new Vector3((roomPointX + j) - MapWidth / 2, (roomPointY + i) - MapHeight / 2, 0), Quaternion.identity);
-                exitPosX = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
+
+
+                exitPosX = Random.Range(roomPointX - MapWidth / 2, (roomPointX + j) - MapWidth / 2);
                 exitPosY = Random.Range(roomPointY - MapHeight / 2, (roomPointY + i) - MapHeight / 2);
 
-                posx = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
-                posy = Random.Range(roomPointX - MapWidth / 2, (roomPointX + i) - MapWidth / 2);
+
+                PosX = Random.Range(roomPointX - MapWidth / 2, (roomPointX + j) - MapWidth / 2);
+                PosY = Random.Range(roomPointY - MapHeight / 2, (roomPointY + i) - MapHeight / 2);
+
+                Instantiate(RoadObject, new Vector3((roomPointX + j) - MapWidth / 2, (roomPointY + i) - MapHeight / 2, 0), Quaternion.identity);
+
             }
         }
+
         return isRoad;
     }
 
@@ -225,9 +246,6 @@ public class BoarManager : MonoBehaviour
         }
     }
 
-    // グリッドポジションからランダムの値を取得する
-
-
     // 関数呼び出し
     public void SetupScene()
     {
@@ -235,18 +253,26 @@ public class BoarManager : MonoBehaviour
 
         CreateSpaceData();
 
+
         CreateDangeon();
 
-        transform.position = new Vector3(posx, posy, 0);
+        if (GameManager.mapCount > 3)
+        {
+            transform.position = new Vector3(PosX, PosY, 0);
+        }
+        else
+        {
+            GameManager.mapCount += 1;
+            transform.position = new Vector3(PosX, PosY, 0);
+        }
 
-        bool isEnemy = EnemyCount.annihilatedEnemy;
-        if (isEnemy == false)
+        if (EnemyCount.GetAnnihilatedEnemy() == false)
         {
             Instantiate(exit, new Vector3(exitPosX, exitPosY, 0), Quaternion.identity);
         }
-
-       
     }
+
+
 
 
 }

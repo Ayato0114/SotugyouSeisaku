@@ -18,7 +18,6 @@ public class SceneSwitch : MonoBehaviour
                 //‰½“x‚àƒtƒ‰ƒO‚ª—§‚½‚È‚¢‚æ‚¤‚É‚·‚é
                 exitFlag = true;
 
-                SceneManager.LoadScene("Clear", LoadSceneMode.Single);
             }
         }
     }
