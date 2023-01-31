@@ -80,7 +80,7 @@ public class YamaRubyController : MonoBehaviour
     private void FixedUpdate()
     {
         // ターン制テスト用
-        if(horizontal != 0.0f || vertical != 0.0f)
+        if (horizontal != 0.0f || vertical != 0.0f)
         {
             frg = true;
         }

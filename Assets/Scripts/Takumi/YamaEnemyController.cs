@@ -49,15 +49,19 @@ public class YamaEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //一定間隔で移動方向を逆方向にする
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        // ターン制テスト用
+        
+        if (frg)
         {
-            direction = -direction;
-            timer = changeTime;
+            //一定間隔で移動方向を逆方向にする
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                direction = -direction;
+                timer = changeTime;
+            }
         }
 
-        // ターン制テスト用
         frg = target.GetComponent<YamaRubyController>().frg;
     }
     void FixedUpdate()
