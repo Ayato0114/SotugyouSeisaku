@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BoarManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Count
+    {
+        public int minimum;
+        public int maximum;
+
+        public Count(int min, int max)
+        {
+            minimum = min;
+            maximum = max;
+        }
+    }
     static int MapWidth = 50;
     static int MapHeight = 50;
 
@@ -12,9 +25,17 @@ public class BoarManager : MonoBehaviour
     const int wall = 9;
     const int road = 0;
 
+    //
+    public int columns = 8;
+    public int rows = 8;
+    public Count foodCount = new Count(1, 5); 　//アイテムの配置数
+    
+
     public GameObject WallObject;
     public GameObject RoadObject;
     public GameObject exit;
+    //
+    public GameObject[] foodTiles; //アイテムプレハブ
 
     const int roomMinHeight = 5;
     const int roomMaxHeight = 10;
@@ -37,6 +58,10 @@ public class BoarManager : MonoBehaviour
 
     private int posx;
     private int posy;
+    //
+    private Transform boardHolder;
+    //
+    private List<Vector3> gridPositions = new List<Vector3>(); //ランダム配置可能な位置リスト
     // 道の集合点
     const int meetPointCount = 1;
 
@@ -227,6 +252,40 @@ public class BoarManager : MonoBehaviour
 
     // グリッドポジションからランダムの値を取得する
 
+    void InitialiseList()
+    {
+        gridPositions.Clear();
+        for (int x = 1; x < columns - 1; x++)
+        {
+            for (int y = 1; y < rows - 1; y++)
+            {
+                gridPositions.Add(new Vector3(x, y, 0f));
+            }
+        }
+    }
+
+    Vector3 RandomPosition()
+    {
+        int randomIndex = Random.Range(0, gridPositions.Count);
+        Vector3 randomPosition = gridPositions[randomIndex];
+        gridPositions.RemoveAt(randomIndex);
+
+        return randomPosition;
+    }
+
+    void LayoutObjectAtRandom(GameObject[] prefabArray, int minimum, int maximum)
+    {
+        //配置数を決める
+        int objectCount = Random.Range(minimum, maximum + 1);
+
+        for (int i = 0; i < objectCount; i++)
+        {
+            Vector3 randomPosition = RandomPosition(); //配置する位置を取得
+            GameObject prefabChoice = prefabArray[Random.Range(0, prefabArray.Length)];
+            Instantiate(prefabChoice, randomPosition, Quaternion.identity);
+        }
+    }
+
 
     // 関数呼び出し
     public void SetupScene()
@@ -236,6 +295,9 @@ public class BoarManager : MonoBehaviour
         CreateSpaceData();
 
         CreateDangeon();
+        //ランダム配置できる位置リストを取得
+        InitialiseList();
+       
 
         transform.position = new Vector3(posx, posy, 0);
 
@@ -245,7 +307,7 @@ public class BoarManager : MonoBehaviour
             Instantiate(exit, new Vector3(exitPosX, exitPosY, 0), Quaternion.identity);
         }
 
-       
+        LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
     }
 
 
