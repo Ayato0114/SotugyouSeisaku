@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a91d98bd552194495cc4c33c761962, type: 3}
+  m_Name: StageDataTable
+  m_EditorClassIdentifier: 
+  Stages:
+  - Id: 1
+    Name: Stage1
+    FieldId: 0
+  - Id: 2
+    Name: No Data
+    FieldId: 1
+  - Id: 3
+    Name: No Data
+    FieldId: 2
